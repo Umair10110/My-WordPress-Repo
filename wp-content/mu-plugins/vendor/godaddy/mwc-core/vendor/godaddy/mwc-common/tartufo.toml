@@ -1,0 +1,51 @@
+[tool.tartufo]
+repo-path = "."
+default-regexes = true
+json = false
+regex = true
+entropy = true
+exclude-path-patterns = [
+    # Vendor and documentation assets
+    {path-pattern='resources/js/app.js', reason='Built app.js from documentation'},
+    {path-pattern='resources/vendor', reason='Documentation vendor directory'},
+    {path-pattern='(.*/)?autoload.php', reason='Composer-generated autoload file'},
+
+    # Lock Files are not always in the root
+    {path-pattern='.*composer.lock', reason='Composer-generated lockfile'},
+    {path-pattern='.*package-lock.json', reason='NPM-generated lockfile'},
+    {path-pattern='.*Pipfile.lock', reason='PIP lockfile'},
+    {path-pattern='.*yarn.lock', reason='Yarn lockfile'},
+
+    {path-pattern='.*\.css$', reason='Inline images in CSS assets'},
+    {path-pattern='.*\.scss$', reason='Inline images in CSS assets'},
+    {path-pattern='.*\.ico$', reason='Image assets'},
+    {path-pattern='.*\.jpg$', reason='Image assets'},
+    {path-pattern='.*\.png$', reason='Image assets'},
+    {path-pattern='.*\.svg$', reason='Image assets'},
+
+    # pre-commit configuration
+    {path-pattern='.pre-commit-config.yaml', reason='pre-commit config file'},
+
+    # Tartufo configuration
+    {path-pattern='tartufo.toml', reason='Tartufo config file'},
+
+    # PHPStan baseline
+    {path-pattern='phpstan-baseline.neon', reason='PHPStan baseline'},
+
+    # i18n
+    {path-pattern='languages/', reason='L10n assets'},
+]
+exclude-signatures = [
+    {signature="1e272f8b5d1aef9be75f867711d27745f7e47c384ff1a3d508e9a69e87d21b7d", reason="imported from v2 configuration"},
+    # Filepath: .github/workflows/ci.yml
+    {signature="da7b324701ea63a5cde8dcc16ce3b5ff96bd0b2550a566f00023d47f1fdd7428", reason="imported from v2 configuration"},
+    {signature="70ab47252d065b887fbe8305ab1a20bc6c45aec91d0fc9a203ca8de52e795402", reason="imported from v2 configuration"},
+    {signature="de0c32929d4ab1d30dd56613cb2f8e01c761fe467396f682cbf2f9ba97e89dce", reason="imported from v2 configuration"},
+    {signature="ff919ecb2f9dd21947578d0b27c47b7ba5809e00dd069727cae10d55d521c555", reason="imported from v2 configuration"},
+    {signature="610e89a848dbf911db14e4559a55ab1ef2e8e92f05f617fae47a50f2d02be0e9", reason="imported from v2 configuration"},
+    {signature="875941dc8b53ca1d29d932b48002d1ffcf50ee68b8c20a7e51d86f41144db505", reason="imported from v2 configuration"},
+    # Filepath: .github/workflows/golf-integration-send-translations.yml
+    {signature="db27e5701fa66b5d86bf05fbe69d70916c4c043059769ab08447545b7b103df1", reason="imported from v2 configuration"},
+    # Filepath: tests/Unit/Repositories/WooCommerce/SessionRepositoryTest.php
+    {signature="9e6ded1f3a50ed24e673133dffcc1f4691ebc68abcf96e7d8c0863a13537e154", reason="imported from v2 configuration"},
+]
